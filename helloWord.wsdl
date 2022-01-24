@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://demo01.server.webservice.exercise.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="HelloWebServiceService" targetNamespace="http://demo01.server.webservice.exercise.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://demo01.server.webservice.exercise.com/" elementFormDefault="unqualified" targetNamespace="http://demo01.server.webservice.exercise.com/" version="1.0">
+
+  <xs:element name="HelloWord" type="tns:HelloWord"/>
+
+  <xs:element name="HelloWord3" type="tns:HelloWord3"/>
+
+  <xs:element name="HelloWord3Response" type="tns:HelloWord3Response"/>
+
+  <xs:element name="HelloWordResponse" type="tns:HelloWordResponse"/>
+
+  <xs:complexType name="HelloWord3">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HelloWord3Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HelloWord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HelloWordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWord3Response">
+    <wsdl:part element="tns:HelloWord3Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HelloWordResponse">
+    <wsdl:part element="tns:HelloWordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HelloWord3">
+    <wsdl:part element="tns:HelloWord3" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HelloWord">
+    <wsdl:part element="tns:HelloWord" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloWebService">
+    <wsdl:operation name="HelloWord3">
+      <wsdl:input message="tns:HelloWord3" name="HelloWord3">
+    </wsdl:input>
+      <wsdl:output message="tns:HelloWord3Response" name="HelloWord3Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWord">
+      <wsdl:input message="tns:HelloWord" name="HelloWord">
+    </wsdl:input>
+      <wsdl:output message="tns:HelloWordResponse" name="HelloWordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloWebServiceServiceSoapBinding" type="tns:HelloWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="HelloWord3">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="HelloWord3">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="HelloWord3Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWord">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="HelloWord">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="HelloWordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloWebServiceService">
+    <wsdl:port binding="tns:HelloWebServiceServiceSoapBinding" name="HelloWebServicePort">
+      <soap:address location="http://localhost:8123/helloWord"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

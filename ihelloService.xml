@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://demo02.server.webservice.exercise.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="HelloServiceImplService" targetNamespace="http://demo02.server.webservice.exercise.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://demo02.server.webservice.exercise.com/" elementFormDefault="unqualified" targetNamespace="http://demo02.server.webservice.exercise.com/" version="1.0">
+
+  <xs:element name="helloWebService" type="tns:helloWebService"/>
+
+  <xs:element name="helloWebServiceResponse" type="tns:helloWebServiceResponse"/>
+
+  <xs:complexType name="helloWebService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="msg" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="helloWebServiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="helloWebServiceResponse">
+    <wsdl:part element="tns:helloWebServiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helloWebService">
+    <wsdl:part element="tns:helloWebService" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IhelloService">
+    <wsdl:operation name="helloWebService">
+      <wsdl:input message="tns:helloWebService" name="helloWebService">
+    </wsdl:input>
+      <wsdl:output message="tns:helloWebServiceResponse" name="helloWebServiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloServiceImplServiceSoapBinding" type="tns:IhelloService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="helloWebService">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="helloWebService">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="helloWebServiceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloServiceImplService">
+    <wsdl:port binding="tns:HelloServiceImplServiceSoapBinding" name="HelloServiceImplPort">
+      <soap:address location="http://localhost:8080/soap/ihelloService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
